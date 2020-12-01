@@ -1,5 +1,7 @@
 #include<stdio.h>
+
 int p[205],q[205]; 
+
 int main()
 {
     int T,n,i,j;

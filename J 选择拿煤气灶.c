@@ -5,7 +5,9 @@
 struct PQR
 {
 	long long stant,expe;
-}yyy[65636];
+};
+
+struct PQR yyy[65636];
 
 int Comp(const void*p1,const void*p2)
 {
@@ -14,13 +16,15 @@ int Comp(const void*p1,const void*p2)
 
 int i,j;
 
-long long qmulti(long long M, long long N, long long P)
+long long qmulti(long long M,long long N,long long P)
 {
     long long ans=0;
     while(N)
     {
         if(N&1)
-            ans+=M;
+        {
+        	ans+=M;
+		}
         M=(M+M)%P;
         M%=P;
         ans%=P;
@@ -35,7 +39,12 @@ long long qpow(long long y,long long z,long long P)
 	y%=P;
 	long long ans=1;
 	for(q=z;q;q>>=1,y=y*y%P)
-		if(q&1)	ans=ans*y%P;
+	{
+		if(q&1)
+		{
+			ans=ans*y%P;
+		}
+	}
 	return ans;
 }
 
@@ -43,13 +52,19 @@ long long aj[100006];
 
 long long cm(long long N,long long M,long long P)
 {
-	if(M>N)	return 0;
+	if(M>N)
+	{
+		return 0;
+	}
 	return (aj[N]*qpow(aj[M],P-2,P))%P*qpow(aj[N-M],P-2,P)%P;
 }
 
 long long lucas(long long N,long long M,long long P)
 {
-	if(M==0)	return 1;
+	if(M==0)
+	{
+		return 1;
+	}
 	return cm(N%P,M%P,P)*lucas(N/P,M/P,P)%P;	
 }
 
@@ -75,7 +90,9 @@ long long chi()
 {
 	long long x,y,a=0,M,N=1;
 	for(i=1;i<=k;i++)
+	{
 		N*=p[i];
+	}
 	for(i=1;i<=k;i++)
 	{
 		M=N/p[i];
@@ -84,9 +101,13 @@ long long chi()
 		a=(a+qmulti(jkl,B[i],N))%N;
 	}
 	if(a>0)
+	{
 		return a;
+	}
 	else
+	{
 		return a+N;
+	}
 }
 
 long long v[23],n,m,cnt;
@@ -100,9 +121,13 @@ int main()
 		scanf("%lld%lld%lld",&n,&m,&k);
 		memset(yyy,0,sizeof(yyy));
 		for(i=1;i<=n;i++)
+		{
 			scanf("%lld",&v[i]);
+		}
 		for(i=1;i<=k;i++)
+		{
 			scanf("%lld",&p[i]);
+		}
 		int oto=1;
 		yyy[oto].stant=-1;
 		yyy[oto++].expe=v[1]+1;
@@ -124,7 +149,9 @@ int main()
 		for(i=2;i<=oto;i++) 
 		{
 			if(yyy[i].expe==lasexpe)
+			{
 				yyy[cnt].stant+=yyy[i].stant;
+			}
 			else
 			{
 				cnt++;

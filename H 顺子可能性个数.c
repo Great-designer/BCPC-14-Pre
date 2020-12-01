@@ -1,6 +1,8 @@
 #include<stdio.h>
+
 char a[8];
 int x[150];
+
 int main()
 {
 	int t,i,j,k;

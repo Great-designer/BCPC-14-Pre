@@ -1,16 +1,19 @@
 #include<stdio.h>
+
 int k[105],p[105];
+
 int comp(const void*a,const void*b)
 {
-	return *(int*)b-*(int*)a;
+	return *(int*)b>*(int*)a?1:-1;
 }
+
 int main()
 {
     int T,n,m,a,b,c;
     scanf("%d",&T);
     while(T--)
     {
-        scanf("%d %d %d %d %d",&n,&m,&a,&b,&c);
+        scanf("%d%d%d%d%d",&n,&m,&a,&b,&c);
         int level=1,exp;
 		int i,j,q=0;
 		for(i=1;i<=99;i++)
